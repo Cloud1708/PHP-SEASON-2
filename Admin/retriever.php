@@ -71,7 +71,7 @@ while($row_users = mysqli_fetch_assoc($retireve_query)) {
 
    &nbsp;
 
-   <a href=' ?Script=$jScript && newScript=$newScript $$ getDelete=$getDelete && id_user=$id_user ' class='btn-delete'>Delete</a>
+   <a href=' ?Script=$jScript && newScript=$newScript && getDelete=$getDelete && id_user=$id_user ' class='btn-delete'>Delete</a>
 
 
    

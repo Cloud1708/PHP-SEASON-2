@@ -1,8 +1,8 @@
 <?php
 
-$id_user = $_GET["id_user"];
+$id_user = $_GET['id_user'];
 
-$query_name = mysqli_query($connections, "SELECT * FROM tbl_user WHERE id_user='id_user' ");
+$query_name = mysqli_query($connections, "SELECT * FROM tbl_user WHERE id_user='$id_user'");
 
 $row_ = mysqli_fetch_assoc($query_name);
 
@@ -22,8 +22,15 @@ if($db_gender == "Male"){
 
 }
 
-$full_name = $gender_preffix . " " . ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name); 
+$full_name = $gender_preffix . " " . ucfirst($db_first_name) . " " . ucfirst($db_middle_name[0]) . ". " . ucfirst($db_last_name);
 
+if(isset($_POST['btnDelete'])){
+
+    mysqli_query($connections, "DELETE FROM tbl_user WHERE id_user='$id_user'");
+
+    echo "<script>window.location.href='ViewRecord?notify=$full_name has been successfully deleted!'</script>";
+
+}
 
 ?>
 
@@ -40,4 +47,3 @@ You are about to delete this user: <font color="red"><?php echo $full_name; ?></
     </form>
 </center>
 
-<hr>

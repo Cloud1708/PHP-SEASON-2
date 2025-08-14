@@ -22,6 +22,7 @@ include("nav.php")
 if(empty($_GET["getDelete"])){
 
 }else{
+    
     include("confirm_delete.php");
 }
 
