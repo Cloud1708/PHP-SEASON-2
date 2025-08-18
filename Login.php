@@ -41,7 +41,7 @@ if(isset($_POST['btnLogin'])) {
 
         $db_log_time = strtotime($fetch['log_time']);
 
-    $my_log_time = $fetch["log_time"];
+        $my_log_time = $fetch["log_time"];
 
         $new_time = strtotime($time_now);
 
