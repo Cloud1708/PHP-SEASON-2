@@ -1,10 +1,42 @@
 <?php
 
+session_start();
+
 include("../connections.php");
+
+if(isset($_SESSION["email"])){
+    $email = $_SESSION["email"];
+
+    $authention = mysqli_query($connections, "SELECT * FROM tbl_user WHERE email='$email'");
+    $fetch = mysqli_fetch_assoc($authention);
+    $account_type = $fetch["account_type"];
+
+    if($account_type !=1){
+        echo "<script>window.location.href='../Forbidden';</script>";
+    }
+    
+}
 
 include("nav.php")
 
 ?>
+
+<br>
+<br>
+
+<?php
+
+
+if(empty($_GET["notify"])){
+
+}else{
+    echo "<font color=green><h3><center>" . $_GET["notify"] . "</center></h3></font>";
+}
+
+
+?>
+
+
 <script type="text/javascript" src="js/jQuery.js"></script>
 
 <script type="application/javascript">
@@ -45,10 +77,5 @@ if(empty($_GET["getUpdate"])){
 
 }
 
-if(empty($_GET["notify"])){
-
-}else{
-    echo "<font color=green><h3><center>" . $_GET["notify"] . "</center></h3></font>";
-}
 
 ?>
