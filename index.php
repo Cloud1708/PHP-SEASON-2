@@ -131,6 +131,32 @@ if(isset($_POST["btnRegister"])) {
 
                                     $password = random_password(8);
 
+                                    require 'PHPMailer/PHPMailerAutoload.php';
+
+                                    $mail = new PHPMailer;
+
+                                    $mail->SMTPDebug = 3;
+
+                                    $mail->IsSMTP();
+
+                                    $mail->Host = 'smtp.gmail.com';
+
+                                    $mail->SMTAuth = true;
+
+                                    $mail->Username = 'criscarloh"gmail.com';
+
+                                    $mail->Password = 'carlo172005';
+
+                                    $mail->SMTSecure = 'tsl';
+
+                                    $mail->Port = 587;
+
+                                    $mail->Form = 'Galing ka gwapuhan ko';
+
+                                    $mail->FromName = 'PHP Lord';
+
+                                    $mail->addAddress($email);
+
                                     include("connections.php");
 
                                     mysqli_query($connections, "INSERT INTO tbl_user (first_name, middle_name, last_name, gender, preffix, seven_digit, email, password,account_type) VALUES ('$first_name', '$middle_name', '$last_name', '$gender', '$preffix', '$seven_digit', '$email', '$password' , '2')");
@@ -154,6 +180,8 @@ if(isset($_POST["btnRegister"])) {
     }
 
 }
+
+
 
 ?>
 
